@@ -3,3 +3,14 @@
   content: "";
   display: block;
 }
+.left{
+  float:left;
+}
+.right{
+  float:right;
+}
+.next_world{
+  color: #a3a3a3;
+  font-size: 12px;
+  line-height: 12px;
+}

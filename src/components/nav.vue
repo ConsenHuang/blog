@@ -1,21 +1,19 @@
 <template>
-  <div>
-  <div class="bg_nav hidden-sm-and-down">
+<div>
+  <div class="bg_nav">
     <el-row  class="nav_top ">
-      <el-col v-for="(item,index) in navItem" :key="index" :xs="24" :sm="2" :md="2" :lg="2" :xl="2"> <li :title="item" v-pointer class="item_of_nav" >
-        {{item}}
-      </li></el-col>
+      <el-col v-for="(item,index) in navItem" :key="index" :xs="24" :sm="2" :md="2" :lg="2" :xl="2">
+        <li :title="item" v-pointer class="item_of_nav" >
+          {{item}}
+        </li>
+      </el-col>
     </el-row>
   </div>
-
-  <div class="bg_nav_2 hidden-sm-and-up">
-    <el-row  class="nav_top2 ">
-      <el-col v-for="(item,index) in navItem" :key="index" :xs="24" :sm="24" :md="24" :lg="24" :xl="24"> <li :title="item" v-pointer class="item_of_nav2" >
-        {{item}}
-      </li></el-col>
-    </el-row>
-  </div>
-  </div>
+  <el-breadcrumb class="bread">
+    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+    <el-breadcrumb-item>心情</el-breadcrumb-item>
+  </el-breadcrumb>
+</div>
 </template>
 
 <script>
@@ -30,11 +28,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .bg_nav{
-    /*background: #dbe6eb*/
-  }
-  .bg_nav_2{
-    /*background: #000*/
+  .bread{
+    margin: 20px 0;
   }
 .nav_top{
   width: 100%;
@@ -68,8 +63,14 @@ export default {
     line-height: 36px;
     background: rgba(0, 0, 0, 0.6);
   }
+  .item_of_nav2:hover{
+    box-shadow: inset 1px 1px 1px 1px #dbe6eb;
+    color: #fff;
+    font-size: 16px;
+  }
   .item_of_nav:hover{
     box-shadow: inset 1px 1px 1px 1px #dbe6eb;
     color: #fff;
+    font-size: 16px;
   }
 </style>
