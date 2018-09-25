@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from '@/components/home.vue'
-
 Vue.use(Router)
 
 export default new Router({
@@ -9,7 +7,28 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: home
+      component: resolve => require(['@/components/home.vue'], resolve),
+      redirect: '/item',
+      children: [
+        {
+          path: '/main',
+          name: 'main',
+          redirect: '/item',
+          component: resolve => require(['@/components/main.vue'], resolve),
+          children: [
+            {
+              path: '/item',
+              name: 'item',
+              component: resolve => require(['@/components/item.vue'], resolve)
+            },
+            {
+              path: '/content',
+              name: 'content',
+              component: resolve => require(['@/components/content.vue'], resolve)
+            }
+          ]
+        }
+      ]
     }
   ]
 })

@@ -24,9 +24,9 @@ export default {
     }
   },
   mounted () {
-    setTimeout(() => {
-      this.show_title = true
-    }, 1000)
+    setInterval(() => {
+      this.show_title = !this.show_title
+    }, 10000)
   }
 }
 </script>

@@ -40,11 +40,21 @@ module.exports = {
   },
   module: {
     rules: [
-      ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
-        test: /\.(ttf|eot|woff|woff2|svg)/,
-        use: ['file-loader']
+        test: /\.scss$/,
+        use: [{
+          loader: "style-loader" // 将 JS 字符串生成为 style 节点
+        }, {
+          loader: "css-loader" // 将 CSS 转化成 CommonJS 模块
+        }, {
+          loader: "sass-loader" // 将 Sass 编译成 CSS
+        }]
       },
+      // ...(config.dev.useEslint ? [createLintingRule()] : []),
+      // {
+      //   test: /\.(ttf|eot|woff|woff2|svg)/,
+      //   use: ['file-loader','url-loader']
+      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -63,14 +73,14 @@ module.exports = {
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
       },
-      {
-        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('media/[name].[hash:7].[ext]')
-        }
-      },
+      // {
+      //   test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+      //   loader: 'url-loader',
+      //   options: {
+      //     limit: 10000,
+      //     name: utils.assetsPath('media/[name].[hash:7].[ext]')
+      //   }
+      // },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
@@ -78,16 +88,6 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
-      },
-      {
-        test: /\.scss$/,
-        use: [{
-          loader: "style-loader" // 将 JS 字符串生成为 style 节点
-        }, {
-          loader: "css-loader" // 将 CSS 转化成 CommonJS 模块
-        }, {
-          loader: "sass-loader" // 将 Sass 编译成 CSS
-        }]
       }
     ]
   },
