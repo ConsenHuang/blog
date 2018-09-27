@@ -132,9 +132,9 @@ export default {
       return scrollTop
     },
     cleanCanvas () {
+      var that = this
       return new Promise(function (resolve, reject) {
-        var that = this
-        this.ctx.clearRect(20, 20, that.W, that.H)
+        that.ctx.clearRect(20, 20, that.W, that.H)
         resolve()
       })
     }
